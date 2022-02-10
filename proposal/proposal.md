@@ -23,4 +23,4 @@ Since the questions would be provided by our users, we would not need to contact
 # Design Mockup
 
 ## Landing Page
-![Landing Page for App](assets/Landing Page.jpg "Landing Page w Logo")
+<img src="/assets/Landing Page.jpg" alt="Landing Page Mockup"/>
