@@ -20,7 +20,14 @@ We will approach this in using a weekly .............
 # External API Help
 Since the questions would be provided by our users, we would not need to contact any external API to make this happen
 
-# Design Mockup
+# Design Mock-up
+Here is a basic design mockup for the project, this is  all subject to change 
 
 ## Landing Page
 <img src="/assets/Landing Page.jpg" alt="Landing Page Mockup"/>
+
+## Register/Sign-In Page
+<img src="/assets/RegisterPage.jpg" alt="Register or Sign In Page"/>
+
+## Home Page
+<img src="/assets/HomePage.jpg" alt="Home/Main Page"/>
