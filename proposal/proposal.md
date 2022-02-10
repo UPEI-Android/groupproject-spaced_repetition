@@ -24,10 +24,27 @@ Since the questions would be provided by our users, we would not need to contact
 Here is a basic design mockup for the project, this is  all subject to change 
 
 ## Landing Page
-<img src="/assets/Landing Page.jpg" alt="Landing Page Mockup"/>
+<img src="/assets/Landing Page.jpg" alt="Landing Page Mockup"/>  
+  
+This shall be the very first page upon app load up.
 
-## Register/Sign-In Page
+## Register/Sign-In Page  
+Here users can register themselves into the database or if they are already registered sign into the app.  
+
 <img src="/assets/RegisterPage.jpg" alt="Register or Sign In Page"/>
 
 ## Home Page
+This is the home page of the app, here users can create a new set of questions for the repetition algorithm.  
+Users can also change the app settings (maybe the profile picture or timer on the algorithm, etc. This would be explored more further down the app).  
+Users can also see a list of their previously set question sets. From here, they can execute the set, add or delete from it or delete the whole set entirely.  
+  
 <img src="/assets/HomePage.jpg" alt="Home/Main Page"/>
+
+## Set Question Set Page
+This is the page that comes up when the user clicks the "Set New Question List" Button.  
+  
+<img src="/assets/SetQuestionSetPage.jpg" alt="Set Question Set Page"/>
+
+## View Question Set List
+
+## Question Set Execution Page
