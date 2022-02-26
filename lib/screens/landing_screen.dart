@@ -90,7 +90,6 @@ class _LandingScreen extends State<LandingScreen>
                       padding: EdgeInsets.all(10.0),
                     )
                   ],
-
                 )
             )));
   }
