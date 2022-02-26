@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:spaced_repetition_app/screens/landing_screen.dart';
 import 'package:spaced_repetition_app/screens/splash_screen.dart';
 
 void main() {
@@ -24,7 +25,7 @@ class MyApp extends StatelessWidget {
         // Notice that the counter didn't reset back to zero; the application
         // is not restarted.
       ),
-      home: const SplashScreen(),
+      home: const LandingScreen(),
     );
   }
 }
