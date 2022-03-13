@@ -3,8 +3,11 @@ import 'package:spaced_repetition_app/screens/landing_screen.dart';
 import 'package:spaced_repetition_app/screens/splash_screen.dart';
 import 'package:spaced_repetition_app/screens/register_screen.dart';
 import 'package:spaced_repetition_app/screens/home_screen.dart';
+import 'package:firebase_core/firebase_core.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
   runApp(const MyApp());
 }
 
@@ -27,7 +30,7 @@ class MyApp extends StatelessWidget {
         // Notice that the counter didn't reset back to zero; the application
         // is not restarted.
       ),
-      home: const RegisterScreen(),
+      home:  RegisterScreen(),
     );
   }
 }
