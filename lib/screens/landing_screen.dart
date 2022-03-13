@@ -53,7 +53,7 @@ class _LandingScreen extends State<LandingScreen>
                         ),
                       ),
                           ElevatedButton(
-                            onPressed: () { print("I was clicked");},
+                            onPressed: () { print("Register was clicked");},
                             child: Text("Register"),
                             style: ElevatedButton.styleFrom(
                               fixedSize: const Size(100, 35)
@@ -78,7 +78,7 @@ class _LandingScreen extends State<LandingScreen>
                             ),
                           ),
                           ElevatedButton(
-                            onPressed: () { print("I was clicked");},
+                            onPressed: () { print("Sign in was clicked");},
                             child: Text("Sign In"),
                             style: ElevatedButton.styleFrom(
                                 fixedSize: const Size(100, 35)
