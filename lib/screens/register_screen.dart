@@ -3,66 +3,73 @@ import 'package:flutter/material.dart';
 
 class RegisterScreen extends StatelessWidget
 {
-  const RegisterScreen();
+  RegisterScreen();
+
+  final _formKey = GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context){
+
     return Scaffold(
-      body: Container(
-        color: const Color(0xFFDC1A22),
-        child: Center(
-          child: Column(
-            children: <Widget>[
+      appBar: AppBar(
+        backgroundColor: const Color(0xFFDC1A22),
+        centerTitle: true,
+        title: Text("Register to get Started"),
+      ),
+        body: Container(
+          color: const Color(0xFFDC1A22),
+          padding: const EdgeInsets.symmetric(horizontal: 43.0),
+              child: Column(
+            children:<Widget>[
               const Image(
-                image: AssetImage("assets/logo.jpeg")
+                  image: AssetImage("assets/logo.jpeg")
               ),
 
-              Container(
-                child: const TextField(
-                  style: TextStyle(color: Colors.white),
-                  decoration: InputDecoration(
-                      border: OutlineInputBorder(),
-                      labelText: 'Username',
-                      hintStyle: TextStyle(color: Colors.white60),
-                      hintText: 'Enter an user name'
-                  ),
-                ),
-                padding: const EdgeInsets.all(10.0),
-              ),
-
-              Container(
-                child: const TextField(
-                  obscureText: true,
-                  style: TextStyle(color: Colors.white),
-                  decoration: InputDecoration(
-                      border: OutlineInputBorder(),
-                      labelText: 'Password',
-                      hintStyle: TextStyle(color: Colors.white60),
-                      hintText: 'Enter a password',
-                  ),
-                ),
-                padding: const EdgeInsets.all(10.0),
-              ),
-
-              Container(
+              Form(
+            key: _formKey,
+            child: Container(
+              alignment: Alignment.center,
+              child: SingleChildScrollView(    // new line
                 child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
-                    ElevatedButton(
-                      onPressed: (){print("Up was clicked");},
-                      child: const Text("Sign Up"),
-                      style: ElevatedButton.styleFrom(
-                          textStyle: const TextStyle(fontSize: 25)
+                    TextFormField(
+                      decoration: const InputDecoration(
+                        icon: Icon(Icons.person),
+                        hintText: 'What name do you want displayed?',
+                        labelText: 'Display Name',
                       ),
                     ),
-                  ],
-                ),
-                padding: EdgeInsets.all(10.0),
-              ),
+                    TextFormField(
+                      decoration: const InputDecoration(
+                        icon: Icon(Icons.alternate_email),
+                        hintText: 'What is your email address?',
+                        labelText: 'Email',
+                      ),
+                    ),
+                    TextFormField(
+                      decoration: const InputDecoration(
+                        icon: Icon(Icons.password),
+                        hintText: 'Password to secure your account?',
+                        labelText: 'Password',
+                      ),
+                    ),
 
-            ],
+                ElevatedButton(
+                  onPressed: () {
+                    // Validate returns true if the form is valid, or false otherwise.
+                    print("I do nothing yet");
+                    },
+                  child: const Text('Submit'),
+
+                )],
+                ),
+              ),
+            ),
           ),
-        ),
-      ),
+        ]
+              )
+        )
     );
   }
 
