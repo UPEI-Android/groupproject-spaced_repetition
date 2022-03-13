@@ -1,18 +1,9 @@
 import 'package:flutter/material.dart';
 
-class LandingScreen extends StatefulWidget
+class LandingScreen extends StatelessWidget
 {
 
   const LandingScreen();
-
-  @override
-  State<LandingScreen> createState() => _LandingScreen();
-
-
-}
-
-class _LandingScreen extends State<LandingScreen>
-{
 
   @override
   Widget build(BuildContext context) {
@@ -53,7 +44,9 @@ class _LandingScreen extends State<LandingScreen>
                         ),
                       ),
                           ElevatedButton(
-                            onPressed: () { print("Register was clicked");},
+                            onPressed: () {
+                              Navigator.pushNamed(context, "/register_page");
+                            },
                             child: Text("Register"),
                             style: ElevatedButton.styleFrom(
                               fixedSize: const Size(100, 35)
