@@ -14,6 +14,11 @@ class _RegisterScreen extends State<RegisterScreen>
   @override
   Widget build(BuildContext context){
     return Scaffold(
+      appBar: AppBar(
+        title: Text("Register to Get Started"),
+        centerTitle: true,
+        backgroundColor: Color(0xFFDC1A22),
+      ),
       body: Container(
         color: const Color(0xFFDC1A22),
         child: Center(

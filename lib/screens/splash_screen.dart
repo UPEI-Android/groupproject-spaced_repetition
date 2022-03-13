@@ -1,5 +1,10 @@
 import 'package:flutter/material.dart';
 
+/**
+ * I initially made this to serve as a splash screen for the application
+ * but upon further research, I found out that flutter has a native splash screen
+ * package so we use that instead of this widget, making this widget redundant
+ */
 class SplashScreen extends StatefulWidget
 {
 
