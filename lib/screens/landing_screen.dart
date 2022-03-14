@@ -72,7 +72,9 @@ class LandingScreen extends StatelessWidget
                             ),
                           ),
                           ElevatedButton(
-                              onPressed: () { print("Sign in was clicked");},
+                              onPressed: () {
+                                Navigator.pushNamed(context, "/sign_in_screen");
+                              },
                               child: Text("Sign In"),
                               style: ElevatedButton.styleFrom(
                                   fixedSize: const Size(100, 35)

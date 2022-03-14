@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:spaced_repetition_app/repositories/authenticator.dart';
 
-class RegisterScreen extends StatelessWidget {
+class SignInScreen extends StatelessWidget {
   String email = "";
   String password = "";
   final _emailController = TextEditingController();
@@ -29,13 +29,6 @@ class RegisterScreen extends StatelessWidget {
                   children: <Widget>[
                     const Image(image: AssetImage("assets/logo.jpeg")),
                     TextFormField(
-                      decoration: const InputDecoration(
-                        icon: Icon(Icons.person),
-                        hintText: 'What name do you want displayed?',
-                        labelText: 'Display Name',
-                      ),
-                    ),
-                    TextFormField(
                       controller: _emailController,
                       decoration: const InputDecoration(
                         icon: Icon(Icons.alternate_email),
@@ -47,7 +40,7 @@ class RegisterScreen extends StatelessWidget {
                       controller: _passwordController,
                       decoration: const InputDecoration(
                         icon: Icon(Icons.password),
-                        hintText: 'Password to secure your account?',
+                        hintText: 'Password to login to your account',
                         labelText: 'Password',
                       ),
                     ),
