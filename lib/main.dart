@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:spaced_repetition_app/screens/landing_screen.dart';
+import 'package:spaced_repetition_app/screens/sign_in_screen.dart';
 import 'package:spaced_repetition_app/screens/splash_screen.dart';
 import 'package:spaced_repetition_app/screens/register_screen.dart';
 import 'package:spaced_repetition_app/screens/home_screen.dart';
@@ -23,6 +24,7 @@ class MyApp extends StatelessWidget {
       routes: {
         "/": (context) => const LandingScreen(),
         "/register_page": (context) => RegisterScreen(),
+        "/sign_in_screen": (context) => SignInScreen(),
       },
     );
   }
