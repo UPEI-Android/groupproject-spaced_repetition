@@ -1,18 +1,9 @@
 import 'package:flutter/material.dart';
 
-class LandingScreen extends StatefulWidget
+class LandingScreen extends StatelessWidget
 {
 
   const LandingScreen();
-
-  @override
-  State<LandingScreen> createState() => _LandingScreen();
-
-
-}
-
-class _LandingScreen extends State<LandingScreen>
-{
 
   @override
   Widget build(BuildContext context) {
@@ -42,22 +33,24 @@ class _LandingScreen extends State<LandingScreen>
                     Container(
                       child: Column(
                         children: <Widget>[
-                      const Text(
-                      "Are you a New Member?",
-                        textAlign: TextAlign.center,
-                        overflow: TextOverflow.ellipsis,
-                        style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            color: Colors.white,
-                            fontSize: 12.0
-                        ),
-                      ),
+                          const Text(
+                            "Are you a New Member?",
+                            textAlign: TextAlign.center,
+                            overflow: TextOverflow.ellipsis,
+                            style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                                color: Colors.white,
+                                fontSize: 12.0
+                            ),
+                          ),
                           ElevatedButton(
-                            onPressed: () { print("Register was clicked");},
-                            child: Text("Register"),
-                            style: ElevatedButton.styleFrom(
-                              fixedSize: const Size(100, 35)
-                            )
+                              onPressed: () {
+                                Navigator.pushNamed(context, "/register_page");
+                              },
+                              child: Text("Register"),
+                              style: ElevatedButton.styleFrom(
+                                  fixedSize: const Size(100, 35)
+                              )
                           ),
                         ],
                       ),
@@ -78,11 +71,11 @@ class _LandingScreen extends State<LandingScreen>
                             ),
                           ),
                           ElevatedButton(
-                            onPressed: () { print("Sign in was clicked");},
-                            child: Text("Sign In"),
-                            style: ElevatedButton.styleFrom(
-                                fixedSize: const Size(100, 35)
-                            )
+                              onPressed: () { print("Sign in was clicked");},
+                              child: Text("Sign In"),
+                              style: ElevatedButton.styleFrom(
+                                  fixedSize: const Size(100, 35)
+                              )
 
                           ),
                         ],

@@ -9,74 +9,71 @@ class RegisterScreen extends StatelessWidget
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
   // const RegisterScreen();
+  final _formKey = GlobalKey<FormState>();
+
   final Authenticator _auth = Authenticator();
 
   @override
   Widget build(BuildContext context){
     return Scaffold(
       body: Container(
-        color: const Color(0xFFDC1A22),
-        child: Center(
-          child: Column(
-            children: <Widget>[
-              const Image(
-                image: AssetImage("assets/logo.jpeg")
-              ),
-
-              Container(
-                child:  TextField(
-                  controller: _emailController,
-                  style: const TextStyle(color: Colors.white),
-                  decoration: const InputDecoration(
-                      border:  OutlineInputBorder(),
-                      labelText: 'Email',
-                      hintStyle:  TextStyle(color: Colors.white60),
-                      hintText: 'Enter an user name'
-                  ),
-                ),
-                padding: const EdgeInsets.all(10.0),
-              ),
-
-              Container(
-                child:  TextField(
-                  controller: _passwordController,
-                  obscureText: true,
-                  style: const TextStyle(color: Colors.white),
-                  decoration: const InputDecoration(
-                      border: OutlineInputBorder(),
-                      labelText: 'Password',
-                      hintStyle: TextStyle(color: Colors.white60),
-                      hintText: 'Enter a password',
-                  ),
-
-                ),
-                padding: const EdgeInsets.all(10.0),
-              ),
-
-              Container(
-                child: Column(
-                  children: <Widget>[
-                    ElevatedButton(
-                      onPressed: (){
-                         _auth.registerWithEmailAndPassword(_emailController.text, _passwordController.text);
-                      },
-                      child: const Text("Sign Up"),
-                      style: ElevatedButton.styleFrom(
-                          textStyle: const TextStyle(fontSize: 25)
-                      ),
-                    ),
-                  ],
-                ),
-                padding: EdgeInsets.all(10.0),
-              ),
-
-            ],
-          ),
+          color: const Color(0xFFDC1A22),
+        padding: const EdgeInsets.symmetric(horizontal: 43.0),
+        child: Column(
+        children:<Widget>[
+        const Image(
+        image: AssetImage("assets/logo.jpeg")
         ),
+
+        Form(
+        key: _formKey,
+        child: Container(
+        alignment: Alignment.center,
+        child: SingleChildScrollView(    // new line
+        child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: <Widget>[
+        TextFormField(
+        decoration: const InputDecoration(
+        icon: Icon(Icons.person),
+        hintText: 'What name do you want displayed?',
+        labelText: 'Display Name',
+        ),
+        ),
+          TextFormField(
+            controller: _emailController,
+          decoration: const InputDecoration(
+          icon: Icon(Icons.alternate_email),
+          hintText: 'What is your email address?',
+          labelText: 'Email',
+          ),
+          ),
+          TextFormField(
+            controller: _passwordController,
+          decoration: const InputDecoration(
+          icon: Icon(Icons.password),
+          hintText: 'Password to secure your account?',
+          labelText: 'Password',
+          ),
+            ),
+
+        ElevatedButton(
+        onPressed: () {
+        // Validate returns true if the form is valid, or false otherwise.
+          _auth.registerWithEmailAndPassword(_emailController.text, _passwordController.text);
+          print("registered without validation");
+        },
+        child: const Text('Submit'),
+
+      )],
       ),
-    );
+      ),
+      ),
+      ),
+      ]
+      )
+      )
+      );
+    }
+
   }
-
-
-
-}
