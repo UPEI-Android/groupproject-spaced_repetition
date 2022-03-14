@@ -33,24 +33,25 @@ class LandingScreen extends StatelessWidget
                     Container(
                       child: Column(
                         children: <Widget>[
-                      const Text(
-                      "Are you a New Member?",
-                        textAlign: TextAlign.center,
-                        overflow: TextOverflow.ellipsis,
-                        style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            color: Colors.white,
-                            fontSize: 12.0
-                        ),
-                      ),
+                          const Text(
+                            "Are you a New Member?",
+                            textAlign: TextAlign.center,
+                            overflow: TextOverflow.ellipsis,
+                            style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                                color: Colors.white,
+                                fontSize: 12.0
+                            ),
+                          ),
                           ElevatedButton(
-                            onPressed: () {
-                              Navigator.pushNamed(context, "/register_page");
-                            },
-                            child: Text("Register"),
-                            style: ElevatedButton.styleFrom(
-                              fixedSize: const Size(100, 35)
-                            )
+                              onPressed: () {
+                                Navigator.pushNamed(context, "/register_page");
+                              },
+                              child: Text("Register"),
+                              style: ElevatedButton.styleFrom(
+                                  fixedSize: const Size(100, 35)
+                              )
+
                           ),
                         ],
                       ),
@@ -71,11 +72,11 @@ class LandingScreen extends StatelessWidget
                             ),
                           ),
                           ElevatedButton(
-                            onPressed: () { print("Sign in was clicked");},
-                            child: Text("Sign In"),
-                            style: ElevatedButton.styleFrom(
-                                fixedSize: const Size(100, 35)
-                            )
+                              onPressed: () { print("Sign in was clicked");},
+                              child: Text("Sign In"),
+                              style: ElevatedButton.styleFrom(
+                                  fixedSize: const Size(100, 35)
+                              )
 
                           ),
                         ],
