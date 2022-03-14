@@ -51,6 +51,7 @@ class LandingScreen extends StatelessWidget
                               style: ElevatedButton.styleFrom(
                                   fixedSize: const Size(100, 35)
                               )
+
                           ),
                         ],
                       ),
