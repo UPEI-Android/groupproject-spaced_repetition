@@ -33,6 +33,35 @@
           ]
         }
       }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:514053427663:android:a2346cfc7073baaea382ba",
+        "android_client_info": {
+          "package_name": "com.kpdammysam.spaced_repetition_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "514053427663-4nlrgg602vo8ovtie44l9tq81bl7gdoi.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDDHUMvCKIP4B4-P885b2M-ueQSVMUFUuY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "514053427663-4nlrgg602vo8ovtie44l9tq81bl7gdoi.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
     }
   ],
   "configuration_version": "1"
