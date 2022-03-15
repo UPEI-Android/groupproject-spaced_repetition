@@ -17,55 +17,87 @@ class RegisterScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
         body: Container(
-          color: const Color(0xFFDC1A22),
-          padding: const EdgeInsets.symmetric(horizontal: 43.0),
-          child: Form(
-            key: _formKey,
-            child: Container(
-              alignment: Alignment.center,
-              child: SingleChildScrollView(
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: <Widget>[
-                    const Image(image: AssetImage("assets/logo.jpeg")),
-                    TextFormField(
+      color: const Color(0xFFDC1A22),
+      padding: const EdgeInsets.symmetric(horizontal: 43.0),
+      child: Form(
+        key: _formKey,
+        child: Container(
+          alignment: Alignment.center,
+          child: SingleChildScrollView(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                const Image(image: AssetImage("assets/logo.jpeg")),
+                Container(
+                    color: Colors.white,
+                    child: TextFormField(
                       decoration: const InputDecoration(
                         icon: Icon(Icons.person),
                         hintText: 'What name do you want displayed?',
                         labelText: 'Display Name',
                       ),
-                    ),
-                    TextFormField(
+                      validator: (value) {
+                        //Validation for Input
+                        if (value!.isEmpty) {
+                          return "Field Cannot be Empty";
+                        } else if (!RegExp(r'^[a-z A-Z]+$').hasMatch(value)) {
+                          return "Incorrect Name Value";
+                        } else {
+                          return null;
+                        }
+                      },
+                    )),
+                Container(
+                    color: Colors.white,
+                    child: TextFormField(
                       controller: _emailController,
                       decoration: const InputDecoration(
                         icon: Icon(Icons.alternate_email),
                         hintText: 'What is your email address?',
                         labelText: 'Email',
                       ),
-                    ),
-                    TextFormField(
+                      validator: (value) {
+                        //Validation for Input
+                        if (value!.isEmpty) {
+                          return "Field Cannot be Empty";
+                        } else if (!RegExp(r'^[\w-\.]+@([\w-]+\.)+[\w]{2,4}').hasMatch(value)) {
+                          return "Incorrect Email Value";
+                        } else {
+                          return null;
+                        }
+                      },
+                    )),
+                Container(
+                    color: Colors.white,
+                    child: TextFormField(
                       controller: _passwordController,
                       decoration: const InputDecoration(
                         icon: Icon(Icons.password),
                         hintText: 'Password to secure your account?',
                         labelText: 'Password',
                       ),
-                    ),
-                    ElevatedButton(
-                      onPressed: () {
-                        // Validate returns true if the form is valid, or false otherwise.
-                        _auth.registerWithEmailAndPassword(
-                            _emailController.text, _passwordController.text);
-                        print("registered without validation");
+                      validator: (value) {
+                        if (value!.isEmpty) {
+                          return "Field Cannot be Empty";
+                        }
                       },
-                      child: const Text('Submit'),
-                    )
-                  ],
-                ),
-              ),
+                    )),
+                ElevatedButton(
+                  onPressed: () {
+                    if (_formKey.currentState!.validate()) {
+                      // Validate returns true if the form is valid, or false otherwise.
+                      _auth.registerWithEmailAndPassword(
+                          _emailController.text, _passwordController.text);
+                      print("registered without validation");
+                    }
+                  },
+                  child: const Text('Submit'),
+                )
+              ],
             ),
           ),
-        ));
-
+        ),
+      ),
+    ));
   }
 }
