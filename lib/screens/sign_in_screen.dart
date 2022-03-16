@@ -52,6 +52,7 @@ class SignInScreen extends StatelessWidget {
                 Container(
                     color: Colors.white,
                     child: TextFormField(
+                      obscureText: true,
                       controller: _passwordController,
                       decoration: const InputDecoration(
                         icon: Icon(Icons.password),
@@ -61,6 +62,10 @@ class SignInScreen extends StatelessWidget {
                       validator: (value) {
                         if (value!.isEmpty) {
                           return "Field Cannot be Empty";
+                        } else if (value.length < 8) {
+                          return "Field Cannot be less than 8 Characters";
+                        } else {
+                          return null;
                         }
                       },
                     )),
