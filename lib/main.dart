@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:spaced_repetition_app/screens/landing_screen.dart';
 import 'package:spaced_repetition_app/screens/sign_in_screen.dart';
-import 'package:spaced_repetition_app/screens/splash_screen.dart';
 import 'package:spaced_repetition_app/screens/register_screen.dart';
 import 'package:spaced_repetition_app/screens/home_screen.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:spaced_repetition_app/navigators/main_screen.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -25,6 +25,8 @@ class MyApp extends StatelessWidget {
         "/": (context) => const LandingScreen(),
         "/register_page": (context) => RegisterScreen(),
         "/sign_in_screen": (context) => SignInScreen(),
+        "/home_screen": (context) => HomeScreen(),
+        "/main_screen": (context) => BottomNavigatorScreen(),
       },
     );
   }

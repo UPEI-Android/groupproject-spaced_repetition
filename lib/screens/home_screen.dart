@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:persistent_bottom_nav_bar/persistent-tab-view.dart';
+import 'package:spaced_repetition_app/screens/landing_screen.dart';
 
 class HomeScreen extends StatefulWidget
 {
@@ -26,7 +28,19 @@ class _HomeScreen extends State<HomeScreen>
                 child: Column(
                   children: <Widget>[
                     ElevatedButton(
-                        onPressed: (){print("View was clicked");},
+                        onPressed: (){
+                          // Navigator.pushNamed(context, "/");
+
+                          //This navigator method comes with the
+                          //Persistent Nav Bar package and it helps preseve the bar
+                          //and state
+                          pushNewScreen(
+                            context,
+                            screen: LandingScreen(),
+                            pageTransitionAnimation:
+                            PageTransitionAnimation.cupertino,
+                          );
+                        },
                         child: const Text("View Question List"),
                         style: ElevatedButton.styleFrom(
                           fixedSize: const Size(300, 50),

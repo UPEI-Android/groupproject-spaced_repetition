@@ -75,6 +75,8 @@ class SignInScreen extends StatelessWidget {
                       //Print Value for Us to See
                       print(_emailController.text);
                       print(_passwordController.text);
+
+                      Navigator.pushNamed(context, "/main_screen");
                       // _auth.registerWithEmailAndPassword(
                       //     _emailController.text, _passwordController.text);
                       // print("registered without validation");
