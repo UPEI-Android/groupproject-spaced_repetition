@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:persistent_bottom_nav_bar/persistent-tab-view.dart';
-import 'package:spaced_repetition_app/screens/landing_screen.dart';
+import 'package:spaced_repetition_app/screens/settings_screen.dart';
 
 class HomeScreen extends StatefulWidget
 {
@@ -36,7 +36,7 @@ class _HomeScreen extends State<HomeScreen>
                           //and state
                           pushNewScreen(
                             context,
-                            screen: LandingScreen(),
+                            screen: SettingsScreen(),
                             pageTransitionAnimation:
                             PageTransitionAnimation.cupertino,
                           );
