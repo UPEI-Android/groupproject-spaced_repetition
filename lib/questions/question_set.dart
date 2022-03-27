@@ -11,5 +11,16 @@ class QuestionSet
 
   QuestionSet( {required this.setName, required this.questionList});
 
-  int get setSize => questionList.length;
+  //get the size of the list
+  int get listSize => questionList.length;
+
+  //add questions to the list
+  void addQuestion(Question newQ){
+    questionList.add(newQ);
+  }
+
+  //get the question in the index of the list
+  Question getQuestionAt (int index){
+    return questionList[index];
+  }
 }
