@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:spaced_repetition_app/questions/question_class.dart';
 
 ///This will serve as a widget to display a question on the UI of the app
 
-class QuestionCard extends StatelessWidget {
-  const QuestionCard({Key? key}) : super(key: key);
+class QuestionCard{
 
-  @override
-  Widget build(BuildContext context) {
-    return Container();
+  late Question questionValue;
+  QuestionCard(Question question)
+  {
+    this.questionValue = question;
   }
+
 }

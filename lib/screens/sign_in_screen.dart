@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:spaced_repetition_app/helper_widgets/snackbar.dart';
 import 'package:spaced_repetition_app/repositories/authenticator.dart';
 
 class SignInScreen extends StatelessWidget {
@@ -69,14 +70,35 @@ class SignInScreen extends StatelessWidget {
                 ),
                 ElevatedButton(
                   onPressed: () {
+                    // Validate returns true if the form is valid, or false otherwise.
                     if (_formKey.currentState!.validate()) {
-                      // Validate returns true if the form is valid, or false otherwise.
+
+                      // TODO 2: Implement Sign In Authentication
+                      /*
+                      Registered users will need to be able to sign in and
+                      authenticate themselves to use our application and access
+                      their information.
+                      Use the Sign in cubit here after their values have been
+                      authenticated
+                       */
 
                       //Print Value for Us to See
-                      print(_emailController.text);
-                      print(_passwordController.text);
+                      // print(_emailController.text);
+                      // print(_passwordController.text);
 
+                      /*
+                      Use this snackbar to inform user that they are signed in
+                       */
+                      //SnackBarCreator().showSnackBar(context, "You are signed in");
+
+                      /*
+                      Wrap this Navigator.pushNamed statement in an if statement
+                       that ensures the user authentication passed and the user
+                       can progress to the main screen
+                       */
                       Navigator.pushNamed(context, "/main_screen");
+
+
                       // _auth.registerWithEmailAndPassword(
                       //     _emailController.text, _passwordController.text);
                       // print("registered without validation");

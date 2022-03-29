@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:spaced_repetition_app/screens/due_today_screen.dart';
 import 'package:spaced_repetition_app/screens/home_screen.dart';
 import 'package:spaced_repetition_app/screens/profile_screen.dart';
 import 'package:spaced_repetition_app/screens/settings_screen.dart';
@@ -22,6 +23,7 @@ class BottomNavigatorScreen extends StatelessWidget {
   ///They have to be in order to work properly
   final screens = [
     HomeScreen(),
+    DueTodayScreen(),
     SettingsScreen(),
     ProfileScreen(),
   ];
@@ -33,7 +35,12 @@ class BottomNavigatorScreen extends StatelessWidget {
       title: ("Home"),
       activeColorPrimary: Colors.blue,
       inactiveColorPrimary: Colors.grey,
-
+    ),
+    PersistentBottomNavBarItem(
+      icon: Icon(Icons.timer, size: 30),
+      title: ("Due Today"),
+      activeColorPrimary: Colors.red,
+      inactiveColorPrimary: Colors.grey,
     ),
     PersistentBottomNavBarItem(
       icon: Icon(Icons.settings, size: 30),
@@ -86,7 +93,7 @@ class BottomNavigatorScreen extends StatelessWidget {
       ),
       navBarStyle:
           //There are about 20 available styles
-          NavBarStyle.style3, // Choose the nav bar style with this property.
+          NavBarStyle.style6, // Choose the nav bar style with this property.
     );
   }
 }
