@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:spaced_repetition_app/helper_widgets/snackbar.dart';
 import 'package:spaced_repetition_app/repositories/authenticator.dart';
 
 class RegisterScreen extends StatelessWidget {
@@ -89,17 +90,36 @@ class RegisterScreen extends StatelessWidget {
                 ),
                 ElevatedButton(
                   onPressed: () {
+                    // Validate returns true if the form is valid, or false otherwise.
                     if (_formKey.currentState!.validate()) {
-                      // Validate returns true if the form is valid, or false otherwise.
-
                       //Print Value for Us to See
                       print(_nameController.text);
                       print(_emailController.text);
                       print(_passwordController.text);
 
+                      //TODO 1: Implement Registration Functionality
+                      /*
+                        A cubit that manages this state and ensures that a user
+                        can add themselves to our database would be necessary.
+                       You can use the cubit in here after the validation
+                       equates to true (The User inputs acceptable values)
+                       */
+
                       // _auth.registerWithEmailAndPassword(
                       //     _emailController.text, _passwordController.text);
                       // print("registered without validation");
+
+                      /*
+                      Once the user has registered themselves, use a snackbar
+                       to let them know they have been registered in the database
+                       and then navigate back to the landing page.
+                       The Code has been written below, you just need to
+                       uncomment it and use it as you see fit
+                       */
+
+                      SnackBarCreator().showSnackBar(context, "You have been registered");
+
+                      //Navigator.of(context).pop();
                     }
                   },
                   child: const Text('Submit'),
