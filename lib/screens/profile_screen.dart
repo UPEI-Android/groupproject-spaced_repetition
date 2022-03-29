@@ -1,6 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
+///This screen is to give users a chance to edit their profile
+///information
 class ProfileScreen extends StatelessWidget {
   const ProfileScreen();
 

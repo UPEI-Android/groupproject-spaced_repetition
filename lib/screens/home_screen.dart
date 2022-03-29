@@ -3,6 +3,11 @@ import 'package:persistent_bottom_nav_bar/persistent-tab-view.dart';
 import 'package:spaced_repetition_app/screens/question_list_screen.dart';
 import 'package:spaced_repetition_app/screens/settings_screen.dart';
 
+
+///This will serve as the Home Screen
+///It will provide users with an overview of their Created Courses
+///It will also give them the ability to add new courses to the database and to
+///also view the questions present in each course.
 class HomeScreen extends StatelessWidget {
   const HomeScreen() : super();
 
