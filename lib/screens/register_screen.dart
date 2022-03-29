@@ -102,7 +102,9 @@ class RegisterScreen extends StatelessWidget {
                         A cubit that manages this state and ensures that a user
                         can add themselves to our database would be necessary.
                        You can use the cubit in here after the validation
-                       equates to true (The User inputs acceptable values)
+                       equates to true (The User inputs acceptable values).
+                       Also include a check to make sure the same user cant
+                       register twice
                        */
 
                       // _auth.registerWithEmailAndPassword(
@@ -112,13 +114,13 @@ class RegisterScreen extends StatelessWidget {
                       /*
                       Once the user has registered themselves, use a snackbar
                        to let them know they have been registered in the database
-                       and then navigate back to the landing page.
+                       and then navigate back to the landing page so they can
+                       choose the Sign In option now.
                        The Code has been written below, you just need to
                        uncomment it and use it as you see fit
                        */
 
-                      SnackBarCreator().showSnackBar(context, "You have been registered");
-
+                      //SnackBarCreator().showSnackBar(context, "You have been registered");
                       //Navigator.of(context).pop();
                     }
                   },
