@@ -133,9 +133,6 @@ class QuestionListScreen extends StatelessWidget {
               Container(
                 padding: EdgeInsets.all(20.0),
                 child: Text(
-                  // TODO 4: Retrieve Display Name from Database
-                  ///Display name would be provided by DB
-                  ///Please include a method in the cubit to place it in here
                   "Questions in the ${cName} course",
                   style: TextStyle(
                       fontSize: 20.0,
