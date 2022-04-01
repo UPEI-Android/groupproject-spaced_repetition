@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:persistent_bottom_nav_bar/persistent-tab-view.dart';
+import 'package:spaced_repetition_app/helper_widgets/dialog_pop_up.dart';
 import 'package:spaced_repetition_app/helper_widgets/snackbar.dart';
 import 'package:spaced_repetition_app/screens/question_list_screen.dart';
 import 'package:spaced_repetition_app/screens/settings_screen.dart';
@@ -8,9 +9,14 @@ import 'package:spaced_repetition_app/screens/settings_screen.dart';
 ///It will provide users with an overview of their Created Courses
 ///It will also give them the ability to add new courses to the database and to
 ///also view the questions present in each course.
-class HomeScreen extends StatelessWidget {
+class HomeScreen extends StatefulWidget {
   const HomeScreen() : super();
 
+  @override
+  State<HomeScreen> createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> {
   List<Widget> makeListCards(BuildContext context, List<String> courseList) {
     List<Widget> cards = [];
 
@@ -56,8 +62,6 @@ class HomeScreen extends StatelessWidget {
                   //SnackBarCreator().showSnackBar(context, "You pressed me");
                   pushNewScreen(
                     context,
-
-
                     screen: QuestionListScreen(courseList[i]),
                     pageTransitionAnimation: PageTransitionAnimation.cupertino,
                   );
@@ -68,6 +72,10 @@ class HomeScreen extends StatelessWidget {
     return cards;
   }
 
+  void printValues(String value1)
+  {
+    print(value1);
+  }
   @override
   Widget build(BuildContext context) {
     // TODO 3: Implement Course List Retriever
@@ -127,6 +135,12 @@ class HomeScreen extends StatelessWidget {
                     ///Adding New Course to DB Logic Goes in here, Cubit will then
                     ///emit this widget to refresh and display the new course
                     ///in the ListView
+                    ///You will make use of this class, for "Add New Course".
+                    ///The callback will need to take a function with a
+                    ///String parameter (this will be the name of the course they are adding)
+                    DialogBoxCreator().createDialogBox(context, "course", printValues);
+
+                    ///You can call set state after to refresh page
                   },
                   child: Text("Add New Course")),
               /*

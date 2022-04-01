@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:spaced_repetition_app/helper_widgets/dialog_pop_up.dart';
 import 'package:spaced_repetition_app/questions/question_class.dart';
 import 'package:persistent_bottom_nav_bar/persistent-tab-view.dart';
 import 'package:spaced_repetition_app/screens/question_view_screen.dart';
@@ -70,6 +71,10 @@ class QuestionListScreen extends StatelessWidget {
     return cards;
   }
 
+  void printValues(String value1, String value2, String value3)
+  {
+    print("${value1}, ${value2}, ${value3}");
+  }
   ///This would eventually in the end use the a Cubit that will
   ///Take in a string course name and return a list of questions
   ///objects that we can populate on the screen
@@ -156,6 +161,7 @@ class QuestionListScreen extends StatelessWidget {
                     ///Adding New Question to DB Logic Goes in here, Cubit will then
                     ///emit this widget to refresh and display the new course
                     ///in the ListView
+                    DialogBoxCreator().createDialogBox(context, "question", printValues, cName);
                   },
                   child: Text("Add New Question")),
               /*
