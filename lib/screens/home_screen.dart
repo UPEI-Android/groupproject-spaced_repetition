@@ -29,13 +29,29 @@ class HomeScreen extends StatelessWidget {
             margin: EdgeInsets.all(10.0),
             child: ListTile(
                 contentPadding: EdgeInsets.all(10.0),
-                tileColor: Colors.yellowAccent,
+                tileColor: Colors.orange,
                 leading: Icon(
                   Icons.school,
                   size: 30,
                 ),
+                trailing: IconButton(
+                    icon: Icon(
+                      Icons.delete,
+                      size: 30,
+                      color: Colors.red,
+                    ),
+                  onPressed: (){
+                    // TODO 5.1: Deleting a Course
+                    ///Deleting a Course from DB Logic Goes in here,
+                    ///A Cubit function will take the course Name,
+                    ///delete it from the users DB and will then
+                    ///emit this widget to refresh and display the updated
+                    ///course list
+                    ///in the ListView
+                  },
+                ),
                 title: Text(courseList[i],
-                    style: TextStyle(fontWeight: FontWeight.bold)),
+                    style: TextStyle(fontWeight: FontWeight.bold, color: Colors.white)),
                 onTap: () {
                   //SnackBarCreator().showSnackBar(context, "You pressed me");
                   pushNewScreen(
