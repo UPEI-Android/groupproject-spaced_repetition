@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:spaced_repetition_app/questions/question_class.dart';
+import 'package:provider/provider.dart';
+import 'package:spaced_repetition_app/models/question_class.dart';
+
+import '../models/User.dart';
+import '../repositories/database.dart';
 
 class QuestionListScreen extends StatelessWidget {
 
@@ -15,6 +19,8 @@ class QuestionListScreen extends StatelessWidget {
   ///objects that we can populate on the screen
   @override
   Widget build(BuildContext context) {
+    DatabaseAction dbService = Provider.of<DatabaseAction>(context, listen: false);
+    UserData usr = dbService.getUser();
     //TODO 6: Retrieve the Questions related to the CourseName
     /*
     A cubit that manages this state and retrieves all the questions with the

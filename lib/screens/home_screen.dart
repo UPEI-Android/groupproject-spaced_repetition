@@ -70,7 +70,7 @@ class _HomeScreenState extends State<HomeScreen> {
         context: context,
         builder: (context) {
           return AlertDialog(
-            title: Text('Add a new Course'),
+            title: Text('Add a course'),
             content: TextField(
               onChanged: (value) {
                 setState(() {
@@ -88,7 +88,8 @@ class _HomeScreenState extends State<HomeScreen> {
                 onPressed: () async{
                   setState(() {
                     listFromCubit?.insert(0,_textFieldController.text);
-                    // print(listFromCubit);
+                    print(listFromCubit);
+                    print('here');
                     Navigator.pop(context);
                     _textFieldController.clear();
                   });
@@ -108,8 +109,6 @@ class _HomeScreenState extends State<HomeScreen> {
     DatabaseAction dbService = Provider.of<DatabaseAction>(context, listen: false);
      usr = dbService.getUser();
 //
-
-    dbService.loadUserDataCollectionFromFirebase(usr?.uid ?? "Null");
 
     return StreamBuilder<UserData>(
         stream: DatabaseAction(uid: usr?.uid).userData,
@@ -151,7 +150,8 @@ class _HomeScreenState extends State<HomeScreen> {
                       onPressed: ()async {
                         // TODO 5: Adding an New Course
                         _displayTextInputDialog(context, dbService);
-                        await dbService.updateCourses(listFromCubit!);
+                        print(listFromCubit);
+                        // await dbService.updateCourses(listFromCubit!);
 
                       },
                       child: Text("Add New Course")),

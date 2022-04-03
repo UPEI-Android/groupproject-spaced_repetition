@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:spaced_repetition_app/questions/question_class.dart';
+import 'package:spaced_repetition_app/models/question_class.dart';
 
 ///This Screen shows the Questions the user will have due on the
 ///current day.

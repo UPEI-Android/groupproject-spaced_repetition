@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:spaced_repetition_app/questions/question_class.dart';
+import 'package:spaced_repetition_app/models/question_class.dart';
 
 ///This will serve as a widget to display a question on the UI of the app
 

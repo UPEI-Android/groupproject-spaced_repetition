@@ -1,4 +1,4 @@
-import 'package:spaced_repetition_app/questions/question_class.dart';
+import 'package:spaced_repetition_app/models/question_class.dart';
 
 ///This will serve an object for a set of questions
 ///It will group alike questions for the users ease

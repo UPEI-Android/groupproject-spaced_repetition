@@ -29,16 +29,22 @@ class DatabaseAction {
           'cardData': cardField,
           'name': name,
           'courseData': courseField,
+          'indexCards': [],
           'courses' : []
         });
 
 
   }
   Future<void> updateCourses(List<String> courseArr) async{
-    await userCollection.doc(_usr?.uid).set({
-      'cardData': _usr?.cardRef,
-      'name': _usr?.name,
-      'courseData': _usr?.coursesRef,
+    print('called');
+    // await userCollection.doc(_usr?.uid).set({
+    //   'cardData': _usr?.cardRef,
+    //   'name': _usr?.name,
+    //   'indexCards': _usr?.indexCards,
+    //   'courseData': _usr?.coursesRef,
+    //   'courses' : courseArr
+    // });
+    await userCollection.doc(_usr?.uid).update({
       'courses' : courseArr
     });
   }
@@ -65,24 +71,6 @@ class DatabaseAction {
     return userCollection.doc(uid).snapshots()
         .map(_userDataFromSnapshot);
   }
-  // Future<UserData> demo() async {
-  //   // String myDocId = 'user.uid';
-  //   DocumentSnapshot? documentSnapshot;
-  //
-  //   await FirebaseFirestore.instance
-  //       .collection('users') // suppose you have a collection named "Users"
-  //       .doc(uid)
-  //       .get()
-  //       .then((value) {
-  //     documentSnapshot = value; // you get the document here
-  //   });
-  //
-  //   //now you can access the document field value
-  //   var name = documentSnapshot?['name'];
-  //   var card = documentSnapshot?['cardData'];
-  //   var course = documentSnapshot?['courseData'];
-  //   // var location = documentSnapshot?['location'];
-  //   // return UserData(name: name, cardRef: card, coursesRef: course);
-  // }
+
 
 }
