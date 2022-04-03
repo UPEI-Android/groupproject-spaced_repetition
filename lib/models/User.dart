@@ -14,15 +14,15 @@ class UserData{
     String courseRef = map ['courseData'] as String;
     String cardRef = map ['cardData'] as String;
     List<String> courses = map['courses'].cast<String>() as List<String>;
+    // this.indexCards != null ? this.tags.map((i) => i.toJson()).toList() : null;
+    // print(map['indexCards'][0]['questionText']);
+
     List<Question> cards = <Question>[];
-    // List<Question> indexCards = map['indexCards'].cast<Question>() as List<Question>;
-    // final quesData = map['indexCards'];
-    // print(quesData[0].questionText.isEmpty);
-    // quesData.forEach((val) {
-    //   cards?.add(Question.fromMap(val));
-    // });
-    cards.insert(0, new Question('a', 'answerText', 1, 1, DateTime.now()));
-    // print(cards);
+    map['indexCards'].forEach((val) => {
+      cards.insert(0,Question.fromMap(val))
+    });
+    print('end here');
+
     return UserData(name, courseRef, cardRef, courses, uid, cards);
   }
 }

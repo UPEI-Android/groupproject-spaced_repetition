@@ -94,6 +94,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     _textFieldController.clear();
                   });
                   await db.updateCourses(listFromCubit!);
+                  // await db.updateQuestion();
                 },
               ),
 
@@ -109,12 +110,14 @@ class _HomeScreenState extends State<HomeScreen> {
     DatabaseAction dbService = Provider.of<DatabaseAction>(context, listen: false);
      usr = dbService.getUser();
 //
+//      dbService.updateQuestion();
 
     return StreamBuilder<UserData>(
         stream: DatabaseAction(uid: usr?.uid).userData,
     builder: (context, snapshot) {
       if(snapshot.hasData) {
         UserData? userData = snapshot.data;
+        print(userData?.indexCards);
         listFromCubit = userData?.courses;
         return Scaffold(
           body: Container(

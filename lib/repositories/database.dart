@@ -1,6 +1,7 @@
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:spaced_repetition_app/models/question_class.dart';
 
 import '../models/User.dart';
 import '../user/userModel.dart';
@@ -36,16 +37,17 @@ class DatabaseAction {
 
   }
   Future<void> updateCourses(List<String> courseArr) async{
-    print('called');
-    // await userCollection.doc(_usr?.uid).set({
-    //   'cardData': _usr?.cardRef,
-    //   'name': _usr?.name,
-    //   'indexCards': _usr?.indexCards,
-    //   'courseData': _usr?.coursesRef,
-    //   'courses' : courseArr
-    // });
+
     await userCollection.doc(_usr?.uid).update({
       'courses' : courseArr
+    });
+  }
+  Future<void> updateQuestion() async{
+
+    await userCollection.doc(_usr?.uid).update({
+      'indexCards' : FieldValue.arrayUnion([Question('Question Text','Ans Text','New Course',1,1,DateTime.now()).toJson()
+      ]
+      )
     });
   }
   UserData getUser(){
