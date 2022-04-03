@@ -71,9 +71,9 @@ class QuestionListScreen extends StatelessWidget {
     return cards;
   }
 
-  void printValues(String value1, String value2, String value3)
+  void printValues(String value1, String value2, String value3, int value4)
   {
-    print("${value1}, ${value2}, ${value3}");
+    print("${value1}, ${value2}, ${value3}, ${value4}");
   }
   ///This would eventually in the end use the a Cubit that will
   ///Take in a string course name and return a list of questions

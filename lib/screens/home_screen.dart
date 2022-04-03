@@ -76,6 +76,7 @@ class _HomeScreenState extends State<HomeScreen> {
   {
     print(value1);
   }
+
   @override
   Widget build(BuildContext context) {
     // TODO 3: Implement Course List Retriever
