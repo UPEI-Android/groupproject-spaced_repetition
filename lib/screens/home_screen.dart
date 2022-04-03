@@ -74,7 +74,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   //SnackBarCreator().showSnackBar(context, "You pressed me");
                   pushNewScreen(
                     context,
-                    screen: QuestionListScreen(courseList[i]),
+                    screen: QuestionListScreen(listFromCubit![i]),
                     pageTransitionAnimation: PageTransitionAnimation.cupertino,
                   );
                 })));
