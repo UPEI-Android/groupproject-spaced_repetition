@@ -2,6 +2,8 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:persistent_bottom_nav_bar/persistent-tab-view.dart';
 import 'package:provider/provider.dart';
+
+import 'package:spaced_repetition_app/helper_widgets/dialog_pop_up.dart';
 import 'package:spaced_repetition_app/helper_widgets/snackbar.dart';
 import 'package:spaced_repetition_app/repositories/database.dart';
 import 'package:spaced_repetition_app/screens/question_list_screen.dart';
@@ -24,6 +26,7 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   UserData? usr;
+
   List<Widget> makeListCards(BuildContext context, List<String> courseList) {
     List<Widget> cards = [];
 
@@ -42,19 +45,35 @@ class _HomeScreenState extends State<HomeScreen> {
             margin: EdgeInsets.all(10.0),
             child: ListTile(
                 contentPadding: EdgeInsets.all(10.0),
-                tileColor: Colors.yellowAccent,
+                tileColor: Colors.orange,
                 leading: Icon(
                   Icons.school,
                   size: 30,
                 ),
                 title: Text(listFromCubit![i],
                     style: TextStyle(fontWeight: FontWeight.bold)),
+
+                trailing: IconButton(
+                    icon: Icon(
+                      Icons.delete,
+                      size: 30,
+                      color: Colors.red,
+                    ),
+                  onPressed: (){
+                    // TODO 5.1: Deleting a Course
+                    ///Deleting a Course from DB Logic Goes in here,
+                    ///A Cubit function will take the course Name,
+                    ///delete it from the users DB and will then
+                    ///emit this widget to refresh and display the updated
+                    ///course list
+                    ///in the ListView
+                  },
+                ),
+                
                 onTap: () {
                   //SnackBarCreator().showSnackBar(context, "You pressed me");
                   pushNewScreen(
                     context,
-
-
                     screen: QuestionListScreen(courseList[i]),
                     pageTransitionAnimation: PageTransitionAnimation.cupertino,
                   );
@@ -103,11 +122,12 @@ class _HomeScreenState extends State<HomeScreen> {
   List<String>? listFromCubit = [
 
   ];
+
   @override
   Widget build(BuildContext context) {
     DatabaseAction dbService = Provider.of<DatabaseAction>(context, listen: false);
      usr = dbService.getUser();
-//
+
 
     dbService.loadUserDataCollectionFromFirebase(usr?.uid ?? "Null");
 
@@ -156,6 +176,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       },
                       child: Text("Add New Course")),
                   /*
+
               A "Delete Course" Button would follow here eventually once we can
               get the basic question functionality and spaced repetition algo.
               working
