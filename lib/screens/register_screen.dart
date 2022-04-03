@@ -107,8 +107,8 @@ class RegisterScreen extends StatelessWidget {
                        register twice
                        */
 
-                      // _auth.registerWithEmailAndPassword(
-                      //     _emailController.text, _passwordController.text);
+                      _auth.registerWithEmailAndPassword(
+                          _emailController.text, _passwordController.text, _nameController.text);
                       // print("registered without validation");
 
                       /*
@@ -120,8 +120,8 @@ class RegisterScreen extends StatelessWidget {
                        uncomment it and use it as you see fit
                        */
 
-                      //SnackBarCreator().showSnackBar(context, "You have been registered");
-                      //Navigator.of(context).pop();
+                      SnackBarCreator().showSnackBar(context, "You have been registered");
+                      Navigator.of(context).pop();
                     }
                   },
                   child: const Text('Submit'),

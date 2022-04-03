@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:spaced_repetition_app/repositories/database.dart';
 import 'package:spaced_repetition_app/screens/landing_screen.dart';
 import 'package:spaced_repetition_app/screens/sign_in_screen.dart';
 import 'package:spaced_repetition_app/screens/register_screen.dart';
@@ -9,7 +11,23 @@ import 'package:spaced_repetition_app/navigators/main_screen.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
-  runApp(const MyApp());
+  runApp(MultiProvider(providers: [
+    Provider (
+      create: (_) =>DatabaseAction(),
+    )
+  ],
+    child: MaterialApp(
+      title: 'Spaced Repetition',
+      initialRoute: "/",
+      routes: {
+        "/": (context) => const LandingScreen(),
+        "/register_page": (context) => RegisterScreen(),
+        "/sign_in_screen": (context) => SignInScreen(),
+        // "/home_screen": (context) => HomeScreen(),
+        "/main_screen": (context) => BottomNavigatorScreen(),
+      },
+    ),
+  ));
 }
 
 class MyApp extends StatelessWidget {
@@ -25,7 +43,7 @@ class MyApp extends StatelessWidget {
         "/": (context) => const LandingScreen(),
         "/register_page": (context) => RegisterScreen(),
         "/sign_in_screen": (context) => SignInScreen(),
-        "/home_screen": (context) => HomeScreen(),
+        // "/home_screen": (context) => HomeScreen(),
         "/main_screen": (context) => BottomNavigatorScreen(),
       },
     );
