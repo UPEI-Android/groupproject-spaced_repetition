@@ -1,8 +1,16 @@
 import 'package:flutter/material.dart';
+// <<<<<<< HEAD
+import 'package:provider/provider.dart';
+// import 'package:spaced_repetition_app/models/question_class.dart';
+
+import '../models/User.dart';
+import '../repositories/database.dart';
+// =======
 import 'package:spaced_repetition_app/helper_widgets/dialog_pop_up.dart';
 import 'package:spaced_repetition_app/questions/question_class.dart';
 import 'package:persistent_bottom_nav_bar/persistent-tab-view.dart';
 import 'package:spaced_repetition_app/screens/question_view_screen.dart';
+// >>>>>>> dev
 
 class QuestionListScreen extends StatelessWidget {
   late String cName;
@@ -80,6 +88,8 @@ class QuestionListScreen extends StatelessWidget {
   ///objects that we can populate on the screen
   @override
   Widget build(BuildContext context) {
+    DatabaseAction dbService = Provider.of<DatabaseAction>(context, listen: false);
+    UserData usr = dbService.getUser();
     //TODO 6: Retrieve the Questions related to the CourseName
     /*
     A cubit that manages this state and retrieves all the questions with the

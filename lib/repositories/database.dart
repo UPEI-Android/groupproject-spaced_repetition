@@ -1,6 +1,7 @@
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:spaced_repetition_app/models/question_class.dart';
 
 import '../models/User.dart';
 import '../user/userModel.dart';
@@ -29,17 +30,24 @@ class DatabaseAction {
           'cardData': cardField,
           'name': name,
           'courseData': courseField,
+          'indexCards': [],
           'courses' : []
         });
 
 
   }
   Future<void> updateCourses(List<String> courseArr) async{
-    await userCollection.doc(_usr?.uid).set({
-      'cardData': _usr?.cardRef,
-      'name': _usr?.name,
-      'courseData': _usr?.coursesRef,
+
+    await userCollection.doc(_usr?.uid).update({
       'courses' : courseArr
+    });
+  }
+  Future<void> updateQuestion() async{
+
+    await userCollection.doc(_usr?.uid).update({
+      'indexCards' : FieldValue.arrayUnion([Question('Question Text','Ans Text','New Course',1,1,DateTime.now()).toJson()
+      ]
+      )
     });
   }
   UserData getUser(){
@@ -65,24 +73,6 @@ class DatabaseAction {
     return userCollection.doc(uid).snapshots()
         .map(_userDataFromSnapshot);
   }
-  // Future<UserData> demo() async {
-  //   // String myDocId = 'user.uid';
-  //   DocumentSnapshot? documentSnapshot;
-  //
-  //   await FirebaseFirestore.instance
-  //       .collection('users') // suppose you have a collection named "Users"
-  //       .doc(uid)
-  //       .get()
-  //       .then((value) {
-  //     documentSnapshot = value; // you get the document here
-  //   });
-  //
-  //   //now you can access the document field value
-  //   var name = documentSnapshot?['name'];
-  //   var card = documentSnapshot?['cardData'];
-  //   var course = documentSnapshot?['courseData'];
-  //   // var location = documentSnapshot?['location'];
-  //   // return UserData(name: name, cardRef: card, coursesRef: course);
-  // }
+
 
 }

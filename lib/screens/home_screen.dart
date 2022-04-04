@@ -89,7 +89,7 @@ class _HomeScreenState extends State<HomeScreen> {
         context: context,
         builder: (context) {
           return AlertDialog(
-            title: Text('Add a new Course'),
+            title: Text('Add a course'),
             content: TextField(
               onChanged: (value) {
                 setState(() {
@@ -107,11 +107,13 @@ class _HomeScreenState extends State<HomeScreen> {
                 onPressed: () async{
                   setState(() {
                     listFromCubit?.insert(0,_textFieldController.text);
-                    // print(listFromCubit);
+                    print(listFromCubit);
+                    print('here');
                     Navigator.pop(context);
                     _textFieldController.clear();
                   });
                   await db.updateCourses(listFromCubit!);
+                  // await db.updateQuestion();
                 },
               ),
 
@@ -127,15 +129,18 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     DatabaseAction dbService = Provider.of<DatabaseAction>(context, listen: false);
      usr = dbService.getUser();
+//
+//      dbService.updateQuestion();
 
 
-    dbService.loadUserDataCollectionFromFirebase(usr?.uid ?? "Null");
+    // dbService.loadUserDataCollectionFromFirebase(usr?.uid ?? "Null");
 
     return StreamBuilder<UserData>(
         stream: DatabaseAction(uid: usr?.uid).userData,
     builder: (context, snapshot) {
       if(snapshot.hasData) {
         UserData? userData = snapshot.data;
+        print(userData?.indexCards);
         listFromCubit = userData?.courses;
         return Scaffold(
           body: Container(
@@ -171,7 +176,8 @@ class _HomeScreenState extends State<HomeScreen> {
                       onPressed: ()async {
                         // TODO 5: Adding an New Course
                         _displayTextInputDialog(context, dbService);
-                        await dbService.updateCourses(listFromCubit!);
+                        print(listFromCubit);
+                        // await dbService.updateCourses(listFromCubit!);
 
                       },
                       child: Text("Add New Course")),
