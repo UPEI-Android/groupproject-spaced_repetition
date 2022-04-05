@@ -30,7 +30,7 @@ class QCard extends StatelessWidget {
         child: Center(
           child: Text(cardText,
               textAlign: TextAlign.center,
-              style: TextStyle(fontSize: 18.0, color: Colors.black)),
+              style: TextStyle(fontSize: 20.0, color: Colors.black)),
         ),
       );
     }
