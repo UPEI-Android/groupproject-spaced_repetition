@@ -30,7 +30,7 @@ class _QuestionViewScreenState extends State<QuestionViewScreen> {
         child: Center(
           child: SingleChildScrollView(
             child: Card(
-              color: Colors.orange,
+              color: Colors.white,
               child: Padding(
                 padding: EdgeInsets.all(12),
                 child: Column(
@@ -40,7 +40,7 @@ class _QuestionViewScreenState extends State<QuestionViewScreen> {
                         style: TextStyle(
                             fontSize: 30.0,
                             fontWeight: FontWeight.bold,
-                            color: Colors.white)),
+                            color: Colors.black)),
                     SizedBox(height: 10),
                     Visibility(
                       visible: ansIsVisible,
@@ -49,7 +49,7 @@ class _QuestionViewScreenState extends State<QuestionViewScreen> {
                       maintainState: true,
                       child: Text(
                         "Answer: ${widget.question?.answerText}",
-                        style: TextStyle(color: Colors.white, fontSize: 20.0),
+                        style: TextStyle(color: Colors.black, fontSize: 20.0),
                       ),
                     ),
                     ElevatedButton(
