@@ -2,9 +2,11 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:spaced_repetition_app/models/question_class.dart';
+import 'package:spaced_repetition_app/repositories/SRLogic.dart';
 
 import '../models/User.dart';
 import '../user/userModel.dart';
+import 'SRLogic.dart';
 
 class DatabaseAction {
 
@@ -40,6 +42,17 @@ class DatabaseAction {
 
     await userCollection.doc(_usr?.uid).update({
       'courses' : courseArr
+    });
+  }
+  Future<void> addQuestion(String courseName, String qText, String aText, int duration) async{
+    int addDays = SRLogic.calculateAddDays(duration);
+    DateTime nextReview = DateTime.now();
+    nextReview = nextReview.add(Duration(days: addDays));
+    print(nextReview);
+    await userCollection.doc(_usr?.uid).update({
+      'indexCards' : FieldValue.arrayUnion([Question(qText,aText,courseName,1,duration,nextReview).toJson()
+      ]
+      )
     });
   }
   Future<void> updateQuestion() async{

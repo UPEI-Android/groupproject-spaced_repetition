@@ -11,6 +11,7 @@ import 'package:spaced_repetition_app/screens/settings_screen.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
 import '../models/User.dart';
+import '../models/question_class.dart';
 import '../user/userModel.dart';
 
 ///This will serve as the Home Screen
@@ -27,7 +28,7 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   UserData? usr;
 
-  List<Widget> makeListCards(BuildContext context, List<String> courseList) {
+  List<Widget> makeListCards(BuildContext context, List<String> courseList,List<Question> questionList) {
     List<Widget> cards = [];
 
     if (courseList.length == 0) {
@@ -194,7 +195,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           isAlwaysShown: true,
                           child: ListView(
                             scrollDirection: Axis.vertical,
-                            children: makeListCards(context, usr?.courses ?? []),
+                            children: makeListCards(context, usr?.courses ?? [],usr?.indexCards??[]),
                           ),
                         ),
                       ))

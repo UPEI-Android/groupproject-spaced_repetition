@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 
-import '../questions/question_class.dart';
+import '../models/question_class.dart';
+
+// import '../questions/question_class.dart';
 
 class QuestionViewScreen extends StatefulWidget {
-  late Question question;
+  late Question? question;
 
-  QuestionViewScreen(Question questionValue) {
+  QuestionViewScreen(Question? questionValue) {
     this.question = questionValue;
   }
 
@@ -34,7 +36,7 @@ class _QuestionViewScreenState extends State<QuestionViewScreen> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    Text("${widget.question.questionText}?",
+                    Text("${widget.question?.questionText}?",
                         style: TextStyle(
                             fontSize: 30.0,
                             fontWeight: FontWeight.bold,
@@ -46,7 +48,7 @@ class _QuestionViewScreenState extends State<QuestionViewScreen> {
                       maintainAnimation: true,
                       maintainState: true,
                       child: Text(
-                        "Answer: ${widget.question.answerText}",
+                        "Answer: ${widget.question?.answerText}",
                         style: TextStyle(color: Colors.white, fontSize: 20.0),
                       ),
                     ),
