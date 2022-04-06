@@ -1,5 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:persistent_bottom_nav_bar/persistent-tab-view.dart';
+import 'package:spaced_repetition_app/helper_widgets/dialog_pop_up.dart';
+import 'package:spaced_repetition_app/screens/landing_screen.dart';
 
 ///This screen is to give users a chance to edit their profile
 ///information
@@ -74,7 +77,40 @@ class ProfileScreen extends StatelessWidget {
                   "What do you want to change the display name to?"),
               buildTextField("Email", "Change Email to?"),
               buildTextField("Password", "Change Password To?"),
-              ElevatedButton(onPressed: (){}, child: const Text('Submit'))
+              ElevatedButton(onPressed: () {}, child: const Text('Submit')),
+              SizedBox(
+                height: 35,
+              ),
+              ElevatedButton(
+                  onPressed: () {
+                    print("I was clicked sign out");
+
+                    showDialog(
+                        context: context,
+                        builder: (BuildContext context) => AlertDialog(
+                              title: Text("Sign Out?"),
+                              content: Row(
+                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                  children: [
+                                ElevatedButton(
+                                    onPressed: () {
+                                      pushNewScreen(
+                                        context,
+                                        screen: LandingScreen(),
+                                        pageTransitionAnimation:
+                                            PageTransitionAnimation.cupertino,
+                                      );
+                                    },
+                                    child: Text("Yes")),
+                                ElevatedButton(
+                                    onPressed: () {
+                                      Navigator.of(context).pop();
+                                    },
+                                    child: Text("No"))
+                              ]),
+                            ));
+                  },
+                  child: const Text('Sign Out')),
             ],
           ),
         ),

@@ -10,8 +10,8 @@ class DialogBoxCreator {
   DialogBoxCreator();
 
   ///Types: question, course
-  dynamic createDialogBox(
-      BuildContext context, String type, Function callbackOnSubmit,
+  dynamic createDialogBox(BuildContext context, String type,
+      Function callbackOnSubmit,
       [String questionsCourse = "null"]) {
     TextEditingController courseName = TextEditingController();
     TextEditingController questionText = TextEditingController();
@@ -60,12 +60,12 @@ class DialogBoxCreator {
                     TextField(
                       controller: questionText,
                       decoration:
-                          InputDecoration(hintText: "What is the Question?"),
+                      InputDecoration(hintText: "What is the Question?"),
                     ),
                     TextField(
                       controller: questionAnswer,
                       decoration:
-                          InputDecoration(hintText: "What is the answer?"),
+                      InputDecoration(hintText: "What is the answer?"),
                     ),
                     TextField(
                       controller: durationPeriod,
@@ -75,7 +75,7 @@ class DialogBoxCreator {
                       ],
                       decoration: InputDecoration(
                           hintText:
-                              "Duration of Repetition?"), // Only numbers can be entered
+                          "Duration of Repetition?"), // Only numbers can be entered
                     ),
                   ],
                 ),
@@ -94,7 +94,8 @@ class DialogBoxCreator {
                         Navigator.of(context).pop();
                       } else {
                         callbackOnSubmit(questionsCourse, questionText.text,
-                            questionAnswer.text, int.parse(durationPeriod.text));
+                            questionAnswer.text,
+                            int.parse(durationPeriod.text));
                         Navigator.of(context).pop();
                         SnackBarCreator()
                             .showSnackBar(context, "Question Added!");
@@ -104,6 +105,26 @@ class DialogBoxCreator {
               ],
             );
           });
+    } else if (type == "sign-out") {
+      return AlertDialog(
+          title: Text("Sign Out?"),
+          content: Row(
+            children: [
+              TextButton(
+                  onPressed: () {
+                    callbackOnSubmit(context, true);
+                  },
+                  child: Text("Yes")
+              ),
+              TextButton(
+                  onPressed: () {
+                    callbackOnSubmit(context, false);
+                  },
+                  child: Text("No")
+              ),
+            ],
+          )
+      );
     }
   }
 }
