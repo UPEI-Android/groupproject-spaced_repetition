@@ -41,10 +41,11 @@ class QuestionListScreen extends StatelessWidget {
       for (int i = 0; i < questionList.length ; i++) {
         cards.add(Card(
             shadowColor: Colors.black,
+            elevation: 10,
             margin: EdgeInsets.all(10.0),
             child: ListTile(
                 contentPadding: EdgeInsets.all(10.0),
-                tileColor: Colors.orange,
+                tileColor: const Color(0xFFfdc3a9),
                 leading: Icon(
                   Icons.art_track,
                   size: 40,
@@ -61,7 +62,7 @@ class QuestionListScreen extends StatelessWidget {
                   },
                 ),
                 title: Text("Question: ${questionList[i].questionText}?",
-                    style: TextStyle(fontWeight: FontWeight.bold, color: Colors.white)),
+                    style: TextStyle(fontWeight: FontWeight.bold, color: Colors.black)),
                 subtitle: Text(
                     "Next Due On: ${questionList[i].nextReview.day}/${questionList[i].nextReview.month}/${questionList[i].nextReview.year}",),
                 onTap: () {

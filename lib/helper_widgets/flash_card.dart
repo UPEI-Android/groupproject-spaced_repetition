@@ -15,6 +15,7 @@ class QCard extends StatelessWidget {
     if (type == 0) {
       return Card(
         elevation: 10,
+        color: const Color(0xFFfdc3a9),
         child: Center(
           child: Text(cardText,
               textAlign: TextAlign.center,
@@ -26,6 +27,7 @@ class QCard extends StatelessWidget {
       );
     } else {
       return Card(
+        color: const Color(0xFFfdc3a9),
         elevation: 10,
         child: Center(
           child: Text(cardText,

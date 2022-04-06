@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:spaced_repetition_app/models/question_class.dart';
+
 // import 'package:spaced_repetition_app/questions/question_class.dart';
 import 'package:persistent_bottom_nav_bar/persistent-tab-view.dart';
 import 'package:spaced_repetition_app/screens/question_view_screen.dart';
@@ -25,10 +26,11 @@ class DueTodayScreen extends StatelessWidget {
       for (int i = 0; i < questionList.length; i++) {
         cards.add(Card(
             shadowColor: Colors.black,
+            elevation: 10,
             margin: EdgeInsets.all(10.0),
             child: ListTile(
                 contentPadding: EdgeInsets.all(10.0),
-                tileColor: Colors.orange,
+                tileColor: const Color(0xFFfdc3a9),
                 leading: Icon(
                   Icons.art_track,
                   size: 40,
@@ -84,7 +86,7 @@ class DueTodayScreen extends StatelessWidget {
           child: Column(
             children: [
               Container(
-                padding: EdgeInsets.only(top:80.0, left: 20.0, right: 20.0),
+                padding: EdgeInsets.only(top: 80.0, left: 20.0, right: 20.0),
                 child: Text(
                   "Questions Due Today",
                   style: TextStyle(
@@ -94,7 +96,8 @@ class DueTodayScreen extends StatelessWidget {
                 ),
               ),
               Container(
-                padding: EdgeInsets.only(top: 20.0, left: 20.0, right: 20.0, bottom: 10.0),
+                padding: EdgeInsets.only(
+                    top: 20.0, left: 20.0, right: 20.0, bottom: 10.0),
                 child: Text(
                   "There are currently ${dueTodayList.length} questions",
                   style: TextStyle(
