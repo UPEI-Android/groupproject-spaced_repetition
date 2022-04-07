@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flip_card/flip_card.dart';
+import 'package:provider/provider.dart';
 import 'package:spaced_repetition_app/helper_widgets/flash_card.dart';
+import '../models/User.dart';
 import '../models/question_class.dart';
+import '../repositories/database.dart';
 
 // import '../questions/question_class.dart';
 
@@ -21,6 +24,11 @@ class _QuestionViewScreenState extends State<QuestionViewScreen> {
 
   @override
   Widget build(BuildContext context) {
+    DatabaseAction? dbService;
+    dbService = Provider.of<DatabaseAction>(context, listen: false);
+
+    // UserData? usr = dbService?.getUser();
+    // List<Question>? questionList = usr?.indexCards;
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.redAccent,
@@ -37,9 +45,7 @@ class _QuestionViewScreenState extends State<QuestionViewScreen> {
                 padding: EdgeInsets.only(
                     left: 20.0, right: 20.0, bottom: 20.0),
                 child: Text(
-                  // TODO 4: Retrieve Display Name from Database
-                  ///Display name would be provided by DB
-                  ///Please include a method in the cubit to place it in here
+
                   "Tap Card to Reveal Answer",
                   style: TextStyle(
                       fontSize: 20.0,
@@ -62,11 +68,13 @@ class _QuestionViewScreenState extends State<QuestionViewScreen> {
                       onPressed: () {
                         ///Activate Spaced Repetition Algo and update
                         ///question.nextReview
+                        dbService?.step(widget.question!, true);
                       },
                       child: Text("I Remember This")),
                   ElevatedButton(
                       onPressed: () {
                         ///Reset Step/streak
+                        dbService?.step(widget.question!, false);
                       },
                       child: Text("I Don't Remember This"))
                 ],
