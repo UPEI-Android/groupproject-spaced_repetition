@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flip_card/flip_card.dart';
 import 'package:provider/provider.dart';
 import 'package:spaced_repetition_app/helper_widgets/flash_card.dart';
+import 'package:spaced_repetition_app/helper_widgets/snackbar.dart';
 import '../models/User.dart';
 import '../models/question_class.dart';
 import '../repositories/database.dart';
@@ -69,12 +70,16 @@ class _QuestionViewScreenState extends State<QuestionViewScreen> {
                         ///Activate Spaced Repetition Algo and update
                         ///question.nextReview
                         dbService?.step(widget.question!, true);
+                        SnackBarCreator().showSnackBar(context, "Review Date Updated");
+                        Navigator.of(context).pop();
                       },
                       child: Text("I Remember This")),
                   ElevatedButton(
                       onPressed: () {
                         ///Reset Step/streak
                         dbService?.step(widget.question!, false);
+                        SnackBarCreator().showSnackBar(context, "Review Date Reset");
+                        Navigator.of(context).pop();
                       },
                       child: Text("I Don't Remember This"))
                 ],
