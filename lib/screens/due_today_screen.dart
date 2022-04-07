@@ -15,7 +15,7 @@ import '../repositories/database.dart';
 class DueTodayScreen extends StatelessWidget {
   DatabaseAction? dbService;
 
-   DueTodayScreen();
+  DueTodayScreen();
 
   List<Widget> makeQuestionCards(
       BuildContext context, List<Question> questionList) {
@@ -43,7 +43,6 @@ class DueTodayScreen extends StatelessWidget {
                   size: 40,
                 ),
                 isThreeLine: true,
-
                 title: Text("Question: ${questionList[i].questionText}?",
                     style: TextStyle(
                         fontWeight: FontWeight.bold, color: Colors.white)),
@@ -70,71 +69,73 @@ class DueTodayScreen extends StatelessWidget {
     ///Just pass it into the variable "dueTodayList"
     ///  DatabaseAction? dbService;
     dbService = Provider.of<DatabaseAction>(context, listen: false);
-        UserData? usr = dbService?.getUser();
-         List<Question>? dueTodayList = usr?.indexCards;
+    UserData? usr = dbService?.getUser();
+    List<Question>? dueTodayList = usr?.indexCards;
     // List<Question> dueTodayList = [];
     return StreamBuilder<UserData>(
         stream: DatabaseAction(uid: usr?.uid).userData,
-    builder: (context, snapshot) {
-    if (snapshot.hasData) {
-    UserData? userData = snapshot.data;
-    print(userData?.indexCards);
-    dueTodayList = userData?.indexCards;
-    dueTodayList = dueTodayList?.where((element) => element.nextReview.day == DateTime.now().day).toList();
-    return Scaffold(
-      body: Container(
-        color: const Color(0xFFDC1A22),
-        child: Center(
-          child: Column(
-            children: [
-              Container(
-                padding: EdgeInsets.only(top: 80.0, left: 20.0, right: 20.0),
-                child: Text(
-                  "Questions Due Today",
-                  style: TextStyle(
-                      fontSize: 20.0,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.white),
-                ),
-              ),
-              Container(
-                padding: EdgeInsets.only(
-                    top: 20.0, left: 20.0, right: 20.0, bottom: 10.0),
-                child: Text(
-                  "There are currently ${dueTodayList?.length} questions",
-                  style: TextStyle(
-                      fontSize: 15.0,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.white),
-                ),
-              ),
-              SizedBox(
-                height: 10,
-              ),
-              AnimatedSearchBar(),
-              SizedBox(
-                height: 10,
-              ),
-              Expanded(
-                  child: SizedBox(
-                    height: 200.0,
-                    child: Scrollbar(
-                      isAlwaysShown: true,
-                      child: ListView(
-                        scrollDirection: Axis.vertical,
-                        children: makeQuestionCards(context, dueTodayList!),
+        builder: (context, snapshot) {
+          if (snapshot.hasData) {
+            UserData? userData = snapshot.data;
+            print(userData?.indexCards);
+            dueTodayList = userData?.indexCards;
+            dueTodayList = dueTodayList
+                ?.where(
+                    (element) => element.nextReview.day == DateTime.now().day)
+                .toList();
+            return Scaffold(
+              body: Container(
+                color: const Color(0xFFDC1A22),
+                child: Center(
+                  child: Column(
+                    children: [
+                      Container(
+                        padding:
+                            EdgeInsets.only(top: 80.0, left: 20.0, right: 20.0),
+                        child: Text(
+                          "Questions Due Today",
+                          style: TextStyle(
+                              fontSize: 20.0,
+                              fontWeight: FontWeight.bold,
+                              color: Colors.white),
+                        ),
                       ),
-                    ),
-                  ))
-            ],
-          ),
-        ),
-      ),
-    );
-    }
-    return CircularProgressIndicator();
-        }
-    );
-
+                      Container(
+                        padding: EdgeInsets.only(
+                            top: 20.0, left: 20.0, right: 20.0, bottom: 10.0),
+                        child: Text(
+                          "There are currently ${dueTodayList?.length} questions",
+                          style: TextStyle(
+                              fontSize: 15.0,
+                              fontWeight: FontWeight.bold,
+                              color: Colors.white),
+                        ),
+                      ),
+                      SizedBox(
+                        height: 10,
+                      ),
+                      AnimatedSearchBar(),
+                      SizedBox(
+                        height: 10,
+                      ),
+                      Expanded(
+                          child: SizedBox(
+                        height: 200.0,
+                        child: Scrollbar(
+                          isAlwaysShown: true,
+                          child: ListView(
+                            scrollDirection: Axis.vertical,
+                            children: makeQuestionCards(context, dueTodayList!),
+                          ),
+                        ),
+                      ))
+                    ],
+                  ),
+                ),
+              ),
+            );
+          }
+          return CircularProgressIndicator();
+        });
   }
 }
