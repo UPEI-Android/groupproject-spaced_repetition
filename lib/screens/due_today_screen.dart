@@ -6,6 +6,7 @@ import 'package:spaced_repetition_app/models/question_class.dart';
 import 'package:persistent_bottom_nav_bar/persistent-tab-view.dart';
 import 'package:spaced_repetition_app/screens/question_view_screen.dart';
 
+import '../helper_widgets/search_bar.dart';
 import '../models/User.dart';
 import '../repositories/database.dart';
 
@@ -106,6 +107,13 @@ class DueTodayScreen extends StatelessWidget {
                       fontWeight: FontWeight.bold,
                       color: Colors.white),
                 ),
+              ),
+              SizedBox(
+                height: 10,
+              ),
+              AnimatedSearchBar(),
+              SizedBox(
+                height: 10,
               ),
               Expanded(
                   child: SizedBox(

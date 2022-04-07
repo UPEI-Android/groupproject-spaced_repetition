@@ -4,6 +4,7 @@ import 'package:persistent_bottom_nav_bar/persistent-tab-view.dart';
 import 'package:provider/provider.dart';
 
 import 'package:spaced_repetition_app/helper_widgets/dialog_pop_up.dart';
+import 'package:spaced_repetition_app/helper_widgets/search_bar.dart';
 import 'package:spaced_repetition_app/helper_widgets/snackbar.dart';
 import 'package:spaced_repetition_app/repositories/database.dart';
 import 'package:spaced_repetition_app/screens/question_list_screen.dart';
@@ -183,12 +184,13 @@ class _HomeScreenState extends State<HomeScreen> {
                             // await dbService.updateCourses(listFromCubit!);
                           },
                           child: Text("Add New Course")),
-                      /*
-
-              A "Delete Course" Button would follow here eventually once we can
-              get the basic question functionality and spaced repetition algo.
-              working
-               */
+                      SizedBox(
+                        height: 10,
+                      ),
+                      AnimatedSearchBar(),
+                      SizedBox(
+                        height: 10,
+                      ),
                       Expanded(
                           child: SizedBox(
                         height: 200.0,

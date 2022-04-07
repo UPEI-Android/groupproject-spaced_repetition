@@ -10,7 +10,10 @@ class SettingsScreen extends StatelessWidget {
 
   Widget buildOption(context, String textValue) {
     return Container(
-      color: const Color(0xFFfdc3a9),
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(15.0),
+        color: const Color(0xFFfdc3a9),
+      ),
       padding: EdgeInsets.all(10.0),
       child: GestureDetector(
         onTap: () {
