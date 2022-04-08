@@ -5,6 +5,7 @@ class SRLogic{
       return (duration*0.1).round();
   }
   static int reviewAction(int duration, int step, bool remember){
+    if(step == 5) return(duration * percentage[0]).round();
     double intervalPerc = percentage[step];
     if (remember){
       return(duration * intervalPerc).round();
