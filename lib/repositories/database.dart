@@ -71,16 +71,20 @@ class DatabaseAction {
     });
   }
   Future<void> step(Question oldQuestion, bool remember) async{
-    int addDays = SRLogic.reviewAction(oldQuestion.duration, oldQuestion.step,remember);
     DateTime nextReview;
+    int addDays = SRLogic.reviewAction(oldQuestion.duration, oldQuestion.step,remember);
+
     nextReview = oldQuestion.nextReview.add(Duration(days: addDays));
     int step;
-    if(oldQuestion.step >=5) return;
+    if(oldQuestion.step >=5 && remember == true) return;
     if(remember){
+       addDays = SRLogic.reviewAction(oldQuestion.duration, oldQuestion.step,remember);
       step = oldQuestion.step +1;
     }
     else{
+
       step = 1;
+      nextReview = DateTime.now().add(Duration(days: addDays));
     }
     await userCollection.doc(_usr?.uid).update({
       'indexCards' : FieldValue.arrayUnion([(Question(oldQuestion.questionText,
