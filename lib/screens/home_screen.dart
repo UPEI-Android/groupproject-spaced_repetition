@@ -28,7 +28,7 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   UserData? usr;
-
+  DatabaseAction? dbService;
   List<Widget> makeListCards(BuildContext context, List<String> courseList,
       List<Question> questionList) {
     List<Widget> cards = [];
@@ -63,13 +63,11 @@ class _HomeScreenState extends State<HomeScreen> {
                     color: Colors.red,
                   ),
                   onPressed: () {
-                    // TODO 5.1: Deleting a Course
-                    ///Deleting a Course from DB Logic Goes in here,
-                    ///A Cubit function will take the course Name,
-                    ///delete it from the users DB and will then
-                    ///emit this widget to refresh and display the updated
-                    ///course list
-                    ///in the ListView
+                    List<String>? newlistFromCubit= listFromCubit?.where((item) => item!=listFromCubit![i]).toList();
+                    print(listFromCubit);
+                    List<Question>? newListQuestion = questionList.where((item) => item.courseName.toLowerCase().trim() != listFromCubit![i].toLowerCase().trim()).toList();
+                    dbService?.deleteCourses(newlistFromCubit!, newListQuestion,listFromCubit![i]);
+
                   },
                 ),
                 onTap: () {
@@ -130,9 +128,9 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
-    DatabaseAction dbService =
+     dbService =
         Provider.of<DatabaseAction>(context, listen: false);
-    usr = dbService.getUser();
+    usr = dbService?.getUser();
 //
 //      dbService.updateQuestion();
 
@@ -179,7 +177,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       ElevatedButton(
                           onPressed: () async {
                             // TODO 5: Adding an New Course
-                            _displayTextInputDialog(context, dbService);
+                            _displayTextInputDialog(context, dbService!);
                             print(listFromCubit);
                             // await dbService.updateCourses(listFromCubit!);
                           },

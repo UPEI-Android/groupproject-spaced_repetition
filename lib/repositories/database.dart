@@ -44,21 +44,36 @@ class DatabaseAction {
       'courses' : courseArr
     });
   }
+  Future<void> deleteCourses(List<String> courseArr, List<Question> questionListRM,String courseName) async{
+    print(courseName);
+    await userCollection.doc(_usr?.uid).update({
+      'courses' : courseArr
+    });
+    questionListRM = questionListRM.where((item) => item.courseName.toLowerCase().trim() == courseName.toLowerCase().trim()).toList();
+
+    questionListRM.forEach((e) async => {
+      print(e.courseName),
+    await userCollection.doc(_usr?.uid).update({
+    'indexCards' : FieldValue.arrayRemove([e.toJson()])
+    })
+    });
+    // await userCollection.doc(_usr?.uid).update({
+    //   'indexCards' : questionList
+    // });
+  }
   Future<void> addQuestion(String courseName, String qText, String aText, int duration) async{
     int addDays = SRLogic.calculateAddDays(duration);
     DateTime nextReview = DateTime.now();
     nextReview = nextReview.add(Duration(days: addDays));
     print(nextReview);
     await userCollection.doc(_usr?.uid).update({
-      'indexCards' : FieldValue.arrayUnion([Question(qText,aText,courseName,1,duration,nextReview).toJson()
-      ]
-      )
+      'indexCards' : FieldValue.arrayUnion([Question(qText,aText,courseName,1,duration,nextReview).toJson()])
     });
   }
   Future<void> step(Question oldQuestion, bool remember) async{
     int addDays = SRLogic.reviewAction(oldQuestion.duration, oldQuestion.step,remember);
-    DateTime nextReview = DateTime.now();
-    nextReview = nextReview.add(Duration(days: addDays));
+    DateTime nextReview;
+    nextReview = oldQuestion.nextReview.add(Duration(days: addDays));
     int step;
     if(oldQuestion.step >=5) return;
     if(remember){
@@ -98,7 +113,7 @@ class DatabaseAction {
     DocumentSnapshot snapshot = await categories.doc(uid).get();
     if (snapshot.exists) {
       Map<dynamic, dynamic> data = snapshot.data() as Map<dynamic, dynamic>;
-      print(data);
+      // print(data);
       _usr = UserData.fromMap(data,uid);
 
     }
