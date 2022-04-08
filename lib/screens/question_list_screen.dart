@@ -28,7 +28,7 @@ class QuestionListScreen extends StatelessWidget {
       BuildContext context, List<Question> questionList) {
     List<Widget> cards = [];
 
-    print(cName.toLowerCase());
+    // print(cName.toLowerCase());
     if (questionList.length == 0) {
       //If the user has no courses created
       //This will be displayed instead
@@ -63,8 +63,18 @@ class QuestionListScreen extends StatelessWidget {
                 ),
                 title: Text("Question: ${questionList[i].questionText}?",
                     style: TextStyle(fontWeight: FontWeight.bold, color: Colors.black)),
-                subtitle: Text(
+
+                subtitle: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [Text(
                     "Next Due On: ${questionList[i].nextReview.day}/${questionList[i].nextReview.month}/${questionList[i].nextReview.year}",),
+                    Text(
+                      "Review Duration: ${questionList[i].duration} days",),
+                    Text(
+                      "Step: ${questionList[i].step}",),
+
+                  ],
+                ),
                 onTap: () {
                   //SnackBarCreator().showSnackBar(context, "You pressed me");
                   pushNewScreen(
@@ -100,7 +110,7 @@ class QuestionListScreen extends StatelessWidget {
     builder: (context, snapshot) {
       if (snapshot.hasData) {
         UserData? userData = snapshot.data;
-        print(userData?.indexCards);
+        // print(userData?.indexCards);
         questionList = userData?.indexCards;
         questionList = questionList?.where((element) => element.courseName.toLowerCase() == cName.toLowerCase().trim()).toList();
 
