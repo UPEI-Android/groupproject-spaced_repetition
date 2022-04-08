@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 // import 'package:spaced_repetition_app/models/question_class.dart';
 
+import '../helper_widgets/search_bar.dart';
 import '../models/User.dart';
 import '../models/question_class.dart';
 import '../repositories/database.dart';
@@ -144,11 +145,13 @@ class QuestionListScreen extends StatelessWidget {
                         DialogBoxCreator().createDialogBox(context, "question", printValues, cName);
                       },
                       child: Text("Add New Question")),
-                  /*
-              A "Delete Course" Button would follow here eventually once we can
-              get the basic question functionality and spaced repetition algo.
-              working
-               */
+                  SizedBox(
+                    height: 10,
+                  ),
+                  AnimatedSearchBar(),
+                  SizedBox(
+                    height: 10,
+                  ),
                   Expanded(
                       child: SizedBox(
                         height: 200.0,

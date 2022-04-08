@@ -55,6 +55,31 @@ class DatabaseAction {
       )
     });
   }
+  Future<void> step(Question oldQuestion, bool remember) async{
+    int addDays = SRLogic.reviewAction(oldQuestion.duration, oldQuestion.step,remember);
+    DateTime nextReview = DateTime.now();
+    nextReview = nextReview.add(Duration(days: addDays));
+    int step;
+    if(oldQuestion.step >=5) return;
+    if(remember){
+      step = oldQuestion.step +1;
+    }
+    else{
+      step = 1;
+    }
+    await userCollection.doc(_usr?.uid).update({
+      'indexCards' : FieldValue.arrayUnion([(Question(oldQuestion.questionText,
+          oldQuestion.answerText,oldQuestion.courseName,step
+      ,oldQuestion.duration, nextReview)).toJson()
+      ]
+      )
+    });
+    await userCollection.doc(_usr?.uid).update({
+      'indexCards' : FieldValue.arrayRemove([oldQuestion.toJson()
+      ]
+      )
+    });
+  }
   Future<void> updateQuestion() async{
 
     await userCollection.doc(_usr?.uid).update({
