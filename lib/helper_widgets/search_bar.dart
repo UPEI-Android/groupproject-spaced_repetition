@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:persistent_bottom_nav_bar/persistent-tab-view.dart';
+import 'package:spaced_repetition_app/screens/search_screen.dart';
 
 class AnimatedSearchBar extends StatefulWidget {
-  const AnimatedSearchBar();
+  AnimatedSearchBar();
 
   @override
   _AnimatedSearchBarState createState() => _AnimatedSearchBarState();
@@ -29,10 +31,18 @@ class _AnimatedSearchBarState extends State<AnimatedSearchBar> {
                   child: !_folded
                       ? TextField(
                           controller: searchValue,
+                          textInputAction: TextInputAction.search,
                           decoration: InputDecoration(
                               hintText: "Search",
                               hintStyle: TextStyle(color: Colors.blue[300]),
                               border: InputBorder.none),
+                    onSubmitted: (value) {
+                      pushNewScreen(
+                        context,
+                        screen: SearchScreen(searchTerm: value),
+                        pageTransitionAnimation: PageTransitionAnimation.cupertino,
+                      );
+                    },
                         )
                       : null)),
           AnimatedContainer(
