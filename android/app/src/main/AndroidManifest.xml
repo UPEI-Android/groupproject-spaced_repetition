@@ -1,7 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.spaced_repetition_app">
    <application
-        android:label="spaced_repetition_app"
+        android:label="Spaced Repetition"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity
